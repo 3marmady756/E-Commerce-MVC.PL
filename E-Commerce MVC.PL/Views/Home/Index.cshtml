@@ -2,7 +2,951 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- First Section: Categories + Banner Slider -->
+<section>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Sidebar Categories -->
+            <div class="col-md-3 d-none d-md-block">
+                <div class="bg-white h-100 p-4" style="border-right:1px solid #eee; min-height:340px;">
+                    <ul class="list-unstyled mb-0 sidebar-categories" style="font-size:1.1rem;">
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            Phones <i class="fa fa-chevron-right"></i>
+                        </li>
+                        <li class="mb-3 d-flex justify-content-between align-items-center">
+                            Laptops <i class="fa fa-chevron-right"></i>
+                        </li>
+                        <li class="mb-3">Televisions</li>
+                        <li class="mb-3">Gaming</li>
+                        <li class="mb-3">Accessories</li>
+                        <li class="mb-3">Printers</li>
+                        <li class="mb-3">PC</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Banner/Slider -->
+            <div class="col-md-9">
+                <div class="banner-section position-relative d-flex align-items-center" style="background:#000000; min-height:340px; max-width: 1100px; overflow:hidden;">
+                    <!-- Slider Wrapper -->
+                    <div class="slider-wrapper w-100 h-100 position-relative">
+                        <!-- Slides -->
+                        <div class="slide active d-flex align-items-center h-100">
+                            <div class="p-5 text-white" style="z-index:2;">
+                                <div class="mb-2">
+                                    <i class="fab fa-apple fa-lg fs-1"></i>
+                                    <span class="ms-2" style="font-size:2rem;">iPhone 14 Series</span>
+                                </div>
+                                <h2 class="fw-bold" style="font-size:2.7rem;">Up to 10%<br>off Voucher</h2>
+                                <a href="#" class="text-white text-decoration-none mt-4 banner-link">
+                                    Shop Now <i class="fa fa-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                            <img src="~/images/iphoneb.jpg"
+                                 alt="iPhone" class="banner-img ms-auto d-none d-md-block" style="height:90%; max-width:50%; object-fit:contain; z-index:1;">
+                        </div>
+                        <!-- Carousel Dots -->
+                        <div class="slider-dots position-absolute" style="bottom:24px; left:50%; transform:translateX(-50%); z-index:3;">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="flash-sales-section py-5">
+    <div class="container">
+        <div class="d-flex align-items-center mb-2">
+            <span style="display:inline-block;width:24px;height:50px;background:#e94560;border-radius:6px;margin-right:8px;"></span>
+            <span class="fw-bold text-danger" style="font-size:1.07rem;">Today's</span>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
+            <h2 class="fw-bold mb-0" style="font-size:2.2rem;">Best Sales</h2>
+            <div>
+                <button class="cat-arrow me-2" style="border:none;background:#f5f5f5;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
+                    <i class="fa fa-arrow-left"></i>
+                </button>
+                <button class="cat-arrow" style="border:none;background:#f5f5f5;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
+                    <i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="flash-cards-row d-flex flex-nowrap overflow-auto gap-4 mb-4" id="flashCardsRow">
+            <!-- Card 1 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-35%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/keyboard.jpg" alt="Keyboard" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">AK-900 Wired Keyboard</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$960</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$1160</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(75)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-40%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/keyboard.jpg" alt="iPhone" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">iPhone 14 Pro Max</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$999</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$1299</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(120)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-25%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/keyboard.jpg" alt="Laptop" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">MacBook Pro M2</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$1499</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$1999</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(89)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-30%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/keyboard.jpg" alt="Smart Watch" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">Apple Watch Series 8</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$399</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$499</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(65)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 5 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-20%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/keyboard.jpg" alt="AirPods" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">AirPods Pro 2</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$199</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$249</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(112)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 6 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-45%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/keyboard.jpg" alt="iPad" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">iPad Pro 12.9"</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$799</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$1099</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(78)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 7 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-15%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/camera.jpg" alt="Camera" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">Sony A7IV Camera</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$2499</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$2999</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(45)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 8 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-50%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/ps5.jpg" alt="PS5" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">PlayStation 5</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$299</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$499</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(156)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 9 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-25%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/monitor.jpg" alt="Monitor" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">Samsung 4K Monitor</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$449</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$599</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(92)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 10 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-30%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/headphones.jpg" alt="Headphones" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">Sony WH-1000XM5</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$349</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$499</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(134)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 11 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-20%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/keyboard.jpg" alt="Tablet" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">Samsung Galaxy Tab S9</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$799</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$999</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(67)</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Card 12 -->
+            <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm" style="width: 240px;">
+                    <span class="flash-discount">-35%</span>
+                    <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                        <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                        <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                    </div>
+                    <div class="product-image-container mb-3">
+                        <img src="~/images/speaker.jpg" alt="Speaker" class="img-fluid">
+                        <div class="add-to-cart-overlay">
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                        </div>
+                    </div>
+                    <div class="fw-bold mb-1">JBL PartyBox 310</div>
+                    <div class="mb-1">
+                        <span class="text-danger fw-bold">$399</span>
+                        <span class="text-muted text-decoration-line-through ms-2">$599</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-warning">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </span>
+                        <span class="text-muted ms-1" style="font-size:0.95rem;">(88)</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/Products" class="btn btn-danger btn-lg px-5" style="background:#e94560;border:none;">View All Products</a>
+        </div>
+        <hr />
+    </div>
+</section>
+
+<section class="category-section py-5">
+    <div class="container">
+        <div class="d-flex align-items-center mb-2">
+            <span style="display:inline-block;width:24px;height:50px;background:#e94560;border-radius:6px;margin-right:8px;"></span>
+            <span class="fw-bold text-danger" style="font-size:1.07rem;">Categories</span>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-5">
+            <h2 class="fw-bold mb-0" style="font-size:2.2rem;">Browse By Category</h2>
+            <div>
+                <button class="cat-arrow me-2" style="border:none;background:#f5f5f5;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
+                    <i class="fa fa-arrow-left"></i>
+                </button>
+                <button class="cat-arrow" style="border:none;background:#f5f5f5;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
+                    <i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="category-cards-row d-flex justify-content-center flex-wrap gap-3" style="margin-bottom:32px;">
+            <div>
+                <div class="category-card2">
+                    <i class="fa fa-mobile-alt fa-2x mb-2"></i>
+                    <div>Phones</div>
+                </div>
+            </div>
+            <div>
+                <div class="category-card2">
+                    <i class="fa fa-desktop fa-2x mb-2"></i>
+                    <div>Computers</div>
+                </div>
+            </div>
+            <div>
+                <div class="category-card2">
+                    <i class="fa fa-clock fa-2x mb-2"></i>
+                    <div>SmartWatch</div>
+                </div>
+            </div>
+            <div>
+                <div class="category-card2">
+                    <i class="fa fa-camera fa-2x mb-2"></i>
+                    <div>Camera</div>
+                </div>
+            </div>
+            <div>
+                <div class="category-card2">
+                    <i class="fa fa-headphones fa-2x mb-2"></i>
+                    <div>HeadPhones</div>
+                </div>
+            </div>
+            <div>
+                <div class="category-card2">
+                    <i class="fa fa-gamepad fa-2x mb-2"></i>
+                    <div>Gaming</div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+</section>
+
+<!-- Best Selling Products Section -->
+<section class="best-selling-section py-5">
+    <div class="container">
+        <div class="d-flex align-items-center mb-2">
+            <span style="display:inline-block;width:24px;height:50px;background:#e94560;border-radius:6px;margin-right:8px;"></span>
+            <span class="fw-bold text-danger" style="font-size:1.07rem;">This Month</span>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap">
+            <h2 class="fw-bold mb-0" style="font-size:2.2rem;">Best Selling Products</h2>
+            <a href="/Products" class="btn btn-danger px-4 py-2" style="background:#e94560;border:none;font-size:1.1rem;">View All</a>
+        </div>
+        <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <span class="flash-discount">-25%</span>
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/keyboard.jpg" alt="MacBook" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">MacBook Air M2</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$1299</span>
+                            <span class="text-muted text-decoration-line-through ms-2">$1499</span>
+                        </div>
+                        <div class="mb-1">
+                            <span class="text-warning">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(145)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <span class="flash-discount">-30%</span>
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/keyboard.jpg" alt="Samsung" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">Samsung Galaxy S23 Ultra</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$999</span>
+                            <span class="text-muted text-decoration-line-through ms-2">$1199</span>
+                        </div>
+                        <div class="mb-1">
+                            <span class="text-warning">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(98)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <span class="flash-discount">-20%</span>
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/keyboard.jpg" alt="AirPods" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">AirPods Max</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$449</span>
+                            <span class="text-muted text-decoration-line-through ms-2">$549</span>
+                        </div>
+                        <div class="mb-1">
+                            <span class="text-warning">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(112)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <span class="flash-discount">-35%</span>
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/keyboard.jpg" alt="iPad" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">iPad Air 5th Gen</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$599</span>
+                            <span class="text-muted text-decoration-line-through ms-2">$799</span>
+                        </div>
+                        <div class="mb-1">
+                            <span class="text-warning">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(87)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Explore Our Products Section -->
+<section class="explore-products-section py-5">
+    <div class="container">
+        <div class="d-flex align-items-center mb-2">
+            <span style="display:inline-block;width:24px;height:50px;background:#e94560;border-radius:6px;margin-right:8px;"></span>
+            <span class="fw-bold text-danger" style="font-size:1.07rem;">Our Products</span>
+        </div>
+        <h2 class="fw-bold mb-4" style="font-size:2.2rem;">Explore Our Products</h2>
+        <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/keyboard.jpg" alt="Dog Food" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">Breed Dry Dog Food</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$100</span>
+                            <span class="text-warning ms-2">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(35)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/keyboard.jpg" alt="Canon Camera" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">CANON EOS DSLR Camera</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$360</span>
+                            <span class="text-warning ms-2">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(95)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/keyboard.jpg" alt="ASUS Laptop" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">ASUS FHD Gaming Laptop</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$700</span>
+                            <span class="text-warning ms-2">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(325)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/keyboard.jpg" alt="Curology" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">Curology Product Set</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$500</span>
+                            <span class="text-warning ms-2">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(145)</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Card 5 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <span class="badge bg-success position-absolute" style="top:16px;left:16px;z-index:2;">NEW</span>
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/kidscar.jpg" alt="Kids Car" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">Kids Electric Car</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$960</span>
+                            <span class="text-warning ms-2">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(65)</span>
+                        </div>
+                        @* <div class="d-flex gap-2 mt-2"> *@
+                        @*     <span style="display:inline-block;width:16px;height:16px;background:#e94560;border-radius:50%;"></span> *@
+                        @*     <span style="display:inline-block;width:16px;height:16px;background:#111;border-radius:50%;"></span> *@
+                        @* </div> *@
+                    </div>
+                </a>
+            </div>
+            <!-- Card 6 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/cleats.jpg" alt="Soccer Cleats" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">Jr. Zoom Soccer Cleats</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$1160</span>
+                            <span class="text-warning ms-2">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(35)</span>
+                        </div>
+                        @* <div class="d-flex gap-2 mt-2"> *@
+                        @*     <span style="display:inline-block;width:16px;height:16px;background:#e94560;border-radius:50%;"></span> *@
+                        @*     <span style="display:inline-block;width:16px;height:16px;background:#c0ffb3;border-radius:50%;border:1px solid #eee;"></span> *@
+                        @* </div> *@
+                    </div>
+                </a>
+            </div>
+            <!-- Card 7 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <span class="badge bg-success position-absolute" style="top:16px;left:16px;z-index:2;">NEW</span>
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/gamepad.jpg" alt="Gamepad" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">GP11 Shooter USB Gamepad</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$660</span>
+                            <span class="text-warning ms-2">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(55)</span>
+                        </div>
+                        @* <div class="d-flex gap-2 mt-2"> *@
+                        @*     <span style="display:inline-block;width:16px;height:16px;background:#e94560;border-radius:50%;"></span> *@
+                        @*     <span style="display:inline-block;width:16px;height:16px;background:#111;border-radius:50%;"></span> *@
+                        @* </div> *@
+                    </div>
+                </a>
+            </div>
+            <!-- Card 8 -->
+            <div class="col-md-3">
+                <a href="/ProductDetails/Details/1" style="text-decoration:none;color:inherit;">
+                    <div class="flash-card bg-white p-3 rounded-3 position-relative shadow-sm">
+                        <div class="flash-card-icons d-flex flex-column align-items-end position-absolute" style="top: 16px; right: 16px; gap: 8px;">
+                            <button class="icon-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fa-regular fa-eye"></i></button>
+                        </div>
+                        <div class="product-image-container mb-3">
+                            <img src="~/images/jacket.jpg" alt="Jacket" class="img-fluid">
+                            <div class="add-to-cart-overlay">
+                                <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                            </div>
+                        </div>
+                        <div class="fw-bold mb-1">Quilted Satin Jacket</div>
+                        <div class="mb-1">
+                            <span class="text-danger fw-bold">$660</span>
+                            <span class="text-warning ms-2">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-muted ms-1" style="font-size:0.95rem;">(55)</span>
+                        </div>
+                        @* <div class="d-flex gap-2 mt-2"> *@
+                        @*     <span style="display:inline-block;width:16px;height:16px;background:#e94560;border-radius:50%;"></span> *@
+                        @*     <span style="display:inline-block;width:16px;height:16px;background:#111;border-radius:50%;"></span> *@
+                        @* </div> *@
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/Products" class="btn btn-danger btn-lg px-5" style="background:#e94560;border:none;">View All Products</a>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <style>
+        @@media (max-width: 991px) {
+            .banner-section img {
+                display: none;
+            }
+
+            .banner-section {
+                min-height: 220px !important;
+            }
+        }
+
+        @@keyframes slideDown {
+            from {
+                top: -70px;
+            }
+
+            to {
+                top: 0;
+            }
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @@media (max-width: 767px) {
+            .category-card2 {
+                width: 120px;
+                height: 110px;
+                font-size: 1rem;
+            }
+        }
+
+        @@media (max-width: 991px) {
+            .flash-cards-row {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+            }
+
+            .flash-card {
+                min-width: 200px;
+                max-width: 220px;
+            }
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        // Simple JS slider
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dots .dot');
+        let currentSlide = 0;
+
+        function showSlide(idx) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === idx);
+                dots[i].classList.toggle('active', i === idx);
+            });
+            currentSlide = idx;
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => showSlide(i));
+        });
+
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }, 5000);
+
+        // Initialize
+        showSlide(0);
+
+        // Flash cards scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashCardsRow = document.getElementById('flashCardsRow');
+            const leftArrow = document.querySelector('.cat-arrow.me-2');
+            const rightArrow = document.querySelector('.cat-arrow:not(.me-2)');
+
+            leftArrow.addEventListener('click', function() {
+                flashCardsRow.scrollTo({
+                    left: flashCardsRow.scrollLeft - 240,
+                    behavior: 'smooth'
+                });
+            });
+
+            rightArrow.addEventListener('click', function() {
+                flashCardsRow.scrollTo({
+                    left: flashCardsRow.scrollLeft + 240,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+}
