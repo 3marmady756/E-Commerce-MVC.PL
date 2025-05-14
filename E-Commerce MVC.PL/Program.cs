@@ -16,7 +16,7 @@ namespace E_Commerce_MVC.PL
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<IFormFile, FormFile>();
+           // builder.Services.AddSingleton<IFormFile, FormFile>();
 
 
             // Add services to the container.
@@ -29,6 +29,7 @@ namespace E_Commerce_MVC.PL
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
             builder.Services.AddScoped<IFileService, FileService>();
+            builder.Services.AddHttpClient();
 
             var app = builder.Build();
 
