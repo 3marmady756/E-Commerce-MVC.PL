@@ -1,5 +1,8 @@
+using CloudinaryDotNet;
 using E_Commerce.Data.Context;
 using E_Commerce.Services.FormFiles;
+using E_Commerce.Services.Implementation;
+using E_Commerce.Services.Interfaces;
 using E_Commerce_.Repository.Interfaces;
 using E_Commerce_.Repository.Repository;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +29,19 @@ namespace E_Commerce_MVC.PL
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
             });
+            builder.Services.AddAutoMapper(typeof(Program));
+            #region Cloudinary settings
+            builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+
+            builder.Services.AddSingleton(s =>
+            {
+                var config = builder.Configuration.GetSection("CloudinarySettings").Get<CloudinarySettings>();
+                var account = new Account(config.CloudName, config.ApiKey, config.ApiSecret);
+                return new CloudinaryDotNet.Cloudinary(account);
+            });
+            #endregion
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IFileService, FileService>();
             builder.Services.AddHttpClient();

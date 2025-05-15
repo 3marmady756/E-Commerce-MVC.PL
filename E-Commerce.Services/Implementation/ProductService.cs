@@ -1,4 +1,5 @@
-﻿using Azure;
+﻿using AutoMapper;
+using Azure;
 using E_Commerce.Data.DataOrEntity;
 using E_Commerce.Services.FormFiles;
 using E_Commerce.Services.Interfaces;
@@ -19,25 +20,24 @@ namespace E_Commerce.Services.Implementation
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IFileService _fileService;
-     
+        private readonly IMapper _mapper;
 
-        public ProductService(IUnitOfWork unitOfWork,IFileService fileService) 
+        public ProductService(IUnitOfWork unitOfWork, IFileService fileService, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _fileService = fileService;
-            
-            
+            _mapper = mapper;
         }
-       
 
         public async Task<IReadOnlyList<ProductBrand>> GetAllBrandsAsync()
         {
             return await _unitOfWork.ProductRepository.GetProductBrandsAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        public async Task<IEnumerable<ProductVM>> GetAllProductsAsync()
         {
-            return await _unitOfWork.ProductRepository.GetAllWithBrandAndTypeAsync();
+            var products = await _unitOfWork.ProductRepository.GetAllWithBrandAndTypeAsync();
+            return _mapper.Map<IEnumerable<ProductVM>>(products);
         }
 
         public async Task<IReadOnlyList<ProductType>> GetAllTypesAsync()
@@ -45,94 +45,78 @@ namespace E_Commerce.Services.Implementation
             return await _unitOfWork.ProductRepository.GetProductTypesAsync();
         }
 
-        public async Task<Product?> GetProductByIdAsync(int? id)
+        public async Task<ProductVM?> GetProductByIdAsync(int? id)
         {
-           if(id<=0)
-                throw new ArgumentOutOfRangeException("Id Is Not Valid");
-            return await _unitOfWork.ProductRepository.GetByIdAsync(id.Value);
+            if (id is null || id <= 0)
+                return null;  // بدلاً من رمي استثناء
+
+            var product = await _unitOfWork.ProductRepository.GetByIdWithBrandAndTypeAsync(id.Value);
+            if (product == null)
+                return null;
+
+            return _mapper.Map<ProductVM>(product);
         }
 
-        public  async Task UpdateProductAsync(UpdateProductVM updateProductVM)
+        public async Task UpdateProductAsync(UpdateProductVM updateProductVM)
         {
-            if (updateProductVM.Id == null || updateProductVM.Id <= 0)
-                throw new ArgumentOutOfRangeException("Invalid Product Id");
+            if (updateProductVM.Id <= 0)
+                throw new ArgumentOutOfRangeException(nameof(updateProductVM.Id), "Invalid Product Id");
 
             var product = await _unitOfWork.ProductRepository.GetByIdAsync(updateProductVM.Id);
-
-            if (product == null)
+            if (product is null)
                 throw new ArgumentException("Product not found");
 
-            // تحديث الخصائص (حسب خصائص ProductVM و Product)
-            product.Name = updateProductVM.Name;
-            product.Description = updateProductVM.Description;
-            product.Price = updateProductVM .Price;
-            product.StockQuantity = updateProductVM.StockQuantity;
-            
-           
+            _mapper.Map(updateProductVM, product);
 
             _unitOfWork.ProductRepository.Update(product);
             await _unitOfWork.CompleteAsync();
         }
 
-        #region Add product
         public async Task AddProductAsync(ProductVM productVm)
         {
-            if (productVm == null)
-                throw new ArgumentNullException("VM is Null");
-                
+            if (productVm is null)
+                throw new ArgumentNullException(nameof(productVm));
 
             if (string.IsNullOrWhiteSpace(productVm.Name))
-                throw new ArgumentNullException("Product Name is Required");
+                throw new ArgumentException("Product Name is required");
 
-            if (productVm.Price == null || productVm.Price <= 0)
-                throw new ArgumentOutOfRangeException("Product price must be greater than 0");
+            if (productVm.Price <= 0)
+                throw new ArgumentOutOfRangeException(nameof(productVm.Price), "Price must be greater than 0");
 
-            if (productVm.ProductBrandId == null || productVm.ProductBrandId <= 0)
-                throw new ArgumentOutOfRangeException("InValid Brand ID is required");
+            if (productVm.ProductBrandId <= 0)
+                throw new ArgumentOutOfRangeException(nameof(productVm.ProductBrandId), "Invalid Brand ID");
 
-
-
-            if (productVm.ProductTypeId == null || productVm.ProductTypeId <= 0)
-                throw new ArgumentOutOfRangeException("InValid Type ID is required");
+            if (productVm.ProductTypeId <= 0)
+                throw new ArgumentOutOfRangeException(nameof(productVm.ProductTypeId), "Invalid Type ID");
 
             string? imageUrl = null;
 
-            if (productVm.Image != null)
+            if (productVm.Image is not null)
             {
                 imageUrl = await _fileService.UploadFileAsync(productVm.Image);
-
-                if (imageUrl == null)
-                    throw new ArgumentOutOfRangeException("Upload Image Failed");
+                if (string.IsNullOrEmpty(imageUrl))
+                    throw new Exception("Image upload failed");
             }
 
-            var product = new Product
-            {
-                Name = productVm.Name,
-                Description = productVm.Description,
-                Price = productVm.Price,
-                ProductBrandId = productVm.ProductBrandId,
-                ProductTypeId = productVm.ProductTypeId,
-                PictureUrl = imageUrl
-            };
+            var product = _mapper.Map<Product>(productVm);
+            product.PictureUrl = imageUrl;
 
             await _unitOfWork.ProductRepository.AddAsync(product);
             await _unitOfWork.CompleteAsync();
-
-            
         }
-        #endregion
 
         public async Task DeleteProductAsync(int? id)
         {
-            if (id == null || id <= 0)
+            if (id is null or <= 0)
                 throw new ArgumentOutOfRangeException(nameof(id), "Invalid Product Id");
 
             var product = await _unitOfWork.ProductRepository.GetByIdAsync(id.Value);
-            if (product == null)
+            if (product is null)
                 throw new KeyNotFoundException($"Product with ID {id} was not found.");
 
             _unitOfWork.ProductRepository.Delete(product);
             await _unitOfWork.CompleteAsync();
         }
+
     }
 }

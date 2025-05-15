@@ -11,9 +11,9 @@ namespace E_Commerce.Services.Interfaces
 {
      public interface IProductService
     {
-        Task<IEnumerable<Product>> GetAllProductsAsync();
+        Task<IEnumerable<ProductVM>> GetAllProductsAsync();
 
-        Task<Product?> GetProductByIdAsync(int? id);
+        Task<ProductVM?> GetProductByIdAsync(int? id);
         
         Task AddProductAsync(ProductVM productVm);
 
